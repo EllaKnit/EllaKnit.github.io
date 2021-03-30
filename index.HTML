@@ -7,28 +7,8 @@
     <script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
     <script src="/assets/js/plugins/jquery-3.4.1.js"></script>
 </head>
-<body>
-    <form method="post">
-        <section>
-            <h2>Contact information</h2>
-              <label for="name">
-                <span>Name: </span>
-              </label>
-              <input type="text" id="name" name="username">
-            </p>
-            <p>
-              <label for="mail">
-                <span>E-mail: </span>
-              </label>
-              <input type="email" id="mail" name="usermail">
-            </p>
-      </section>
-            <p> <button type="submit" $('#checkout').click(pay)>Validate the payment</button> </p>
-<button class="popup-down__footer-button button" type="button" id="pay">Оплатить</button>
-</section>
-</form>
 <script>
-this.pay = function () {
+this.pay = function rnwdgt () {
  var widget = new cp.CloudPayments();
     widget.pay('auth', // или 'charge'
         { //options
@@ -57,9 +37,28 @@ this.pay = function () {
     )
 };
 
-$('#button').click(pay);
-
 </script>
+<body>
+    <form method="post">
+        <section>
+            <h2>Contact information</h2>
+              <label for="name">
+                <span>Name: </span>
+              </label>
+              <input type="text" id="name" name="username">
+            </p>
+            <p>
+              <label for="mail">
+                <span>E-mail: </span>
+              </label>
+              <input type="email" id="mail" name="usermail">
+            </p>
+      </section>
+            <p> <button type="submit" >Validate the payment</button> </p>
+<button class="popup-down__footer-button button" type="button" id="pay">Оплатить</button>
+<input type="button" onclick="rnwdgt()" value="Считать кроликов!">
 
+</section>
+</form>
 </body>
 </html>
