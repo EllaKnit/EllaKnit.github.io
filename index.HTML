@@ -28,7 +28,7 @@
 </form>
 </body>
 <script>
-this.pay = function () {
+document.getElementById('pay').onclick = function() {
  var widget = new cp.CloudPayments();
     widget.pay('auth', // или 'charge'
         { //options
@@ -36,7 +36,7 @@ this.pay = function () {
             description: 'Оплата товаров в example.com', //назначение
             amount: 100, //сумма
             currency: 'RUB', //валюта
-            accountId: 'user@example.com', //идентификатор плательщика (необязательно)
+            accountId: 'user@example.com', //идентификатор плательщика (необязательно) 'user@example.com'
             invoiceId: '1234567', //номер заказа  (необязательно)
             skin: "mini", //дизайн виджета (необязательно)
             data: {
@@ -57,7 +57,5 @@ this.pay = function () {
     )
 };
   
-$('#button').click(pay);
-
 </script>
 </html>
