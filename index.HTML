@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Payment form example</title>
+    <title>Информация о платеже</title>
     <script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
     <script src="/assets/js/plugins/jquery-3.4.1.js"></script>
 </head>
 <script>
-this.pay = function rnwdgt () {
+var pay = function () {
  var widget = new cp.CloudPayments();
     widget.pay('auth', // или 'charge'
         { //options
@@ -36,14 +36,19 @@ this.pay = function rnwdgt () {
         }
     )
 };
-
+  
+    $(document).on('click', '#pay', function (e) {
+        e.preventDefault();
+        pay();
+    });
+  
 </script>
 <body>
     <form method="post">
         <section>
-            <h2>Contact information</h2>
+            <h2>Персональные данные</h2>
               <label for="name">
-                <span>Name: </span>
+                <span>Имя: </span>
               </label>
               <input type="text" id="name" name="username">
             </p>
@@ -54,10 +59,7 @@ this.pay = function rnwdgt () {
               <input type="email" id="mail" name="usermail">
             </p>
       </section>
-            <p> <button type="submit" >Validate the payment</button> </p>
-<button class="popup-down__footer-button button" type="button" id="pay">Оплатить</button>
-<input type="button" onclick="rnwdgt()" value="Считать кроликов!">
-
+<p> <button class="button" type="button" id="pay">Внести пожертвование</button> </p>
 </section>
 </form>
 </body>
