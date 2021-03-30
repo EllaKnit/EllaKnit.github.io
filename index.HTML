@@ -8,7 +8,7 @@
     <script src="/assets/js/plugins/jquery-3.4.1.js"></script>
 </head>
 <script>
-var pay = function () {
+this.pay = function () {
  var widget = new cp.CloudPayments();
     widget.pay('auth', // или 'charge'
         { //options
@@ -37,10 +37,7 @@ var pay = function () {
     )
 };
   
-    $(document).on('click', '#pay', function (e) {
-        e.preventDefault();
-        pay();
-    });
+$('#button').click(pay);
   
 </script>
 <body>
