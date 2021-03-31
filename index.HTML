@@ -7,40 +7,51 @@
     <script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
     <script src="/assets/js/plugins/jquery-3.4.1.js"></script>
 </head>
+
 <body>
-    <form method="post">
-        <section>
-            <h2>Персональные данные</h2>
-              <label for="name">
-                <span>Имя: </span>
-              </label>
-              <input type="text" id="name" name="username">
-            </p>
-            <p>
-              <label for="mail">
-                <span>E-mail: </span>
-              </label>
-              <input type="email" id="mail" name="usermail">
-            </p>
-      </section>
-<p> <button class="button" type="button" id="pay">Внести пожертвование</button> </p>
-</section>
-</form>
+
+	<form action="action_form.php" method="POST">
+	
+		<fieldset>
+		
+			<legend>Контактная информация</legend>
+			<label>Имя:<br><input type="text" name="email" id="name" name="username"></label> <br>
+			<label>Фамилия:<br><input type="text" id="lastname" name="userlastname"></label> <br>
+			<label>Отчество:<br><input type="text" id="middleName" name="usermiddleName"></label> <br>
+			<label>Телефон:<br><input type="tel" id="phone" name="userphone"></label> <br>
+			<label>E-Mail:<br><input type="email" id="mail" name="usermail"></label>
+			
+		</fieldset>
+		
+		<button class="button" type="button" id="pay">Внести пожертвование</button>
+		<input name="reset" type="reset" value="Очистить">
+	
+	</form>
 </body>
+
 <script>
 document.getElementById('pay').onclick = function() {
- var widget = new cp.CloudPayments();
-    widget.pay('auth', // или 'charge'
+var widget = new cp.CloudPayments();
+var user_phn = document.getElementById("phone").value;
+var user_nme = document.getElementById("name").value;
+var user_lnme = document.getElementById("lastname").value;
+var user_mnme = document.getElementById("middleName").value;
+var user_mail = document.getElementById("mail").value;
+    widget.pay('charge', // или 'auth'
         { //options
             publicId: 'pk_04e78f4264809531a57b8cc75f62c', //id из личного кабинета
-            description: 'Оплата товаров в example.com', //назначение
-            amount: 100, //сумма
+            description: 'Перевод в благотворительный фонд', //назначение
+            amount: 1000, //сумма
             currency: 'RUB', //валюта
-            accountId: 'user@example.com', //идентификатор плательщика (необязательно) 'user@example.com'
-            invoiceId: '1234567', //номер заказа  (необязательно)
-            skin: "mini", //дизайн виджета (необязательно)
+            accountId: user_mail, //идентификатор плательщика 'user@example.com'
+            invoiceId: '-', //номер заказа
+            skin: "modern", //дизайн виджета
             data: {
-                myProp: 'myProp value'
+                myProp: 'myProp value',
+                "Phone": user_phn, // Телефон
+                "firstName": user_nme, // Имя
+                "lastName": user_lnme, // Фамилия
+                "middleName": user_mnme // Отчество
             }
         },
         {
@@ -51,7 +62,6 @@ document.getElementById('pay').onclick = function() {
                 //действие при неуспешной оплате
             },
             onComplete: function (paymentResult, options) { //Вызывается как только виджет получает от api.cloudpayments ответ с результатом транзакции.
-                //например вызов вашей аналитики Facebook Pixel
             }
         }
     )
