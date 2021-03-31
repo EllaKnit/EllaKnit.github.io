@@ -1,4 +1,3 @@
-  
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +20,7 @@
 			<label>Отчество:<br><input type="text" id="middleName" name="usermiddleName"></label> <br>
 			<label>Телефон:<br><input type="tel" id="phone" name="userphone"></label> <br>
 			<label>E-Mail:<br><input type="email" id="mail" name="usermail"></label> <br>
-      <label>Сумма:<br><input type="text" id="paysum" name="addsum"></label> <br>
+			<label>Сумма:<br><input type="text" id="paysum" name="addsum"></label> <br>
 			
 		</fieldset>
 		
@@ -29,9 +28,11 @@
 		<input name="reset" type="reset" value="Очистить">
 	
 	</form>
+	
 </body>
 
 <script>
+
 document.getElementById('pay').onclick = function() {
 
 var widget = new cp.CloudPayments();
