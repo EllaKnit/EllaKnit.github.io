@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +20,8 @@
 			<label>Фамилия:<br><input type="text" id="lastname" name="userlastname"></label> <br>
 			<label>Отчество:<br><input type="text" id="middleName" name="usermiddleName"></label> <br>
 			<label>Телефон:<br><input type="tel" id="phone" name="userphone"></label> <br>
-			<label>E-Mail:<br><input type="email" id="mail" name="usermail"></label>
+			<label>E-Mail:<br><input type="email" id="mail" name="usermail"></label> <br>
+      <label>Сумма:<br><input type="text" id="paysum" name="addsum"></label> <br>
 			
 		</fieldset>
 		
@@ -31,17 +33,20 @@
 
 <script>
 document.getElementById('pay').onclick = function() {
+
 var widget = new cp.CloudPayments();
 var user_phn = document.getElementById("phone").value;
 var user_nme = document.getElementById("name").value;
 var user_lnme = document.getElementById("lastname").value;
 var user_mnme = document.getElementById("middleName").value;
 var user_mail = document.getElementById("mail").value;
+var pay_amnt = Number(document.getElementById("paysum").value);
+
     widget.pay('charge', // или 'auth'
         { //options
             publicId: 'pk_04e78f4264809531a57b8cc75f62c', //id из личного кабинета
             description: 'Перевод в благотворительный фонд', //назначение
-            amount: 1000, //сумма
+            amount: pay_amnt, //сумма
             currency: 'RUB', //валюта
             accountId: user_mail, //идентификатор плательщика 'user@example.com'
             invoiceId: '-', //номер заказа
